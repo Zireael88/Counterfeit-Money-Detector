@@ -99,8 +99,9 @@
       margin-top: 1rem;
       text-align: center;
     }
-    .result-real { color: #4caf50; }
-    .result-fake { color: #f44336; }
+    .result-real { color: #4caf50; }         /* Green for Real Money */
+    .result-fake { color: #f44336; }         /* Red for Counterfeit Money */
+    .result-invalid { color: #ffca28; }      /* Yellow for Invalid (Not a Banknote) */
     .result-waiting {
       color: white;
       font-weight: normal;
@@ -135,7 +136,7 @@
     <div class="card">
       <h2 style="text-align: center;">Result</h2>
       <div class="result-container">
-        <p id="status" class="result-status {{ 'result-real' if label == 'Real Money' else 'result-fake' if label else 'result-waiting' }}">
+        <p id="status" class="result-status {{ 'result-real' if label == 'Real Money' else 'result-fake' if label == 'Counterfeit Money' else 'result-invalid' if label == 'Invalid (Not a Banknote)' else 'result-waiting' }}">
           {{ label if label else 'Upload an image and click Analyze' }}
         </p>
         {% if confidence %}
