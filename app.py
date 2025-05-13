@@ -88,7 +88,7 @@ def index():
         return render_template('index.html', filename=filename, label=result['label'], confidence=result['confidence'])
 
     return render_template('index.html')
-
+        
 @app.route('/batch_analyze', methods=['POST'])
 def batch_analyze():
     if 'files[]' not in request.files:
